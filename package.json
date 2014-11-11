@@ -1,0 +1,14 @@
+{
+  "name": "Mockingbird",
+  "version": "1.0.0",
+  "description": "Travel site with node and express",
+  "main": "mockingbird.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Travis Flatt",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}
