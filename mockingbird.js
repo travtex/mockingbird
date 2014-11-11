@@ -5,17 +5,29 @@ var app = express();
 // set up handlebars view engine
 var handlebars = require('express3-handlebars')
 		.create({defaultLayout: 'main'});
+
+var fortunes = [
+	"A good traveler has no fixed plans, and is not intent on arriving. -Lao Tzu",
+	"I love to travel, but hate to arrive. -Hernan Cortes",
+	"Travel makes a wise man better, and a fool worse. -Thomas Fuller",
+	"Travel teaches as much as books. -Youssou N'Dour",
+	"When you come to a fork in the road, take it -Yogi Berra",
+];
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3000);
+
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.render('home');
 });
 
 app.get('/about', function(req, res) {
-	res.render('about');
+	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+	res.render('about', {fortune: randomFortune });
 });
 
 // custom 404 page
