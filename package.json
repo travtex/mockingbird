@@ -9,6 +9,7 @@
   "author": "Travis Flatt",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.10.2"
+    "express": "^4.10.2",
+    "express3-handlebars": "^0.5.2"
   }
 }
