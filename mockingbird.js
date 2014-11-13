@@ -5,14 +5,7 @@ var app = express();
 // set up handlebars view engine
 var handlebars = require('express3-handlebars')
 		.create({defaultLayout: 'main'});
-
-var fortunes = [
-	"A good traveler has no fixed plans, and is not intent on arriving. -Lao Tzu",
-	"I love to travel, but hate to arrive. -Hernan Cortes",
-	"Travel makes a wise man better, and a fool worse. -Thomas Fuller",
-	"Travel teaches as much as books. -Youssou N'Dour",
-	"When you come to a fork in the road, take it -Yogi Berra",
-];
+var fortune = require('./lib/fortune.js');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -26,8 +19,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/about', function(req, res) {
-	var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-	res.render('about', {fortune: randomFortune });
+	res.render('about', {fortune: fortune.getFortune() } );
 });
 
 // custom 404 page
